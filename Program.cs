@@ -6,7 +6,9 @@ namespace CSharpExercises
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Nome utente: {0}", Environment.UserName);
+            Console.WriteLine("Inserisci nome:");
+            string string1 = Console.ReadLine();
+            Console.WriteLine(string1.ToUpper());
         }
     }
 }
