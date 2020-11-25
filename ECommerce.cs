@@ -12,6 +12,7 @@ namespace ECommerce
         protected string Password;
         
         //
+        //
         // visibilità - valore di ritorno - NomeMetodo()
 
 
