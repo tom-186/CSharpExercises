@@ -6,7 +6,7 @@ namespace CSharpExercises
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Nome utente: {0}", Environment.UserName);
         }
     }
 }
