@@ -1,4 +1,5 @@
 ﻿using System;
+using Ecommerce;
 
 namespace CSharpExercises
 {
@@ -6,7 +7,7 @@ namespace CSharpExercises
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Inserisci nome:");
+            Console.WriteLine("Insert your name:");
             string string1 = Console.ReadLine();
             Console.WriteLine(string1.ToUpper());
         }
