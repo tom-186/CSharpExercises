@@ -20,6 +20,7 @@ namespace CSharpExercises
 
             Article article = new Article ("Face mask", 12.44);
 
+            /* Issue #2 */
             int firstId = 4;
             article.Retrieve(firstId);
             article.Destroy(3);
