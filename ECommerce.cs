@@ -51,17 +51,19 @@ namespace ECommerce
     }
 
     class Article{
-        private int Id;
-        private string Description;
-        private double Price;
-        private int Stock;
-        private double Vat;
+        public int Id { get; }
+        public string Description { get; }
+        public double Price { get; set; }
+        public int Stock { get; }
+        public string Sku  { get; }  // per alcuni ecommerce la giacenza è il codice del prodotto
+        public double Vat { get; set; }
 
+        // Costruttore
         public Article (string description, double price){
             this.Description = description;
             this.Price = price;
             }
-        
+        // Metodi
         public void Create(){
             Console.WriteLine("You created an article");
         }
@@ -76,6 +78,19 @@ namespace ECommerce
 
         public void Destroy(int id){
             Console.WriteLine($"You deleted the {this.Description} article which costs {this.Price} and has {id} as Id");
+        }
+    }
+
+    class OrderHeader{
+        private int Id; // in automatico
+        private int OrderNumber; // in automatico
+        private DateTime Date;
+        private int UserId; //BIGINT - serial (in altri DB)
+
+        //Costruttore
+        public OrderHeader(int userId, DateTime date){
+            UserId = userId;  // non è obbligatorio il this.
+            Date = date;
         }
     }
 }

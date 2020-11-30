@@ -8,8 +8,8 @@ namespace CSharpExercises
         static void Main(string[] args)
         {
             /* Console.WriteLine("Insert your name:");
-            string string1 = Console.ReadLine();
-            Console.WriteLine(string1.ToUpper()); */
+            string myName = Console.ReadLine();
+            Console.WriteLine(myName.ToUpper()); */
 
             // var firstCustomer = new Customer();
             Customer firstCustomer = new Customer ("Francesco", "Rossi", "frossi@yahoo.com");
@@ -24,7 +24,8 @@ namespace CSharpExercises
             int firstId = 4;
             article.Retrieve(firstId);
             article.Destroy(3);
-        
+
+                   
         }
     }
 }
