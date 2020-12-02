@@ -93,7 +93,7 @@ namespace ECommerce
         public void Order(){           
                  
 
-             if (this.Article.NotUnder18 == true)
+             if (this.Customer.Age < 18 && this.Article.NotUnder18 == true)
              {
                  Console.WriteLine($"Sorry, you can not buy this article");
              }
