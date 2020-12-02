@@ -63,13 +63,13 @@ namespace ECommerce
         public int Stock { get; }
         public string Sku  { get; }  // per alcuni ecommerce la giacenza è il codice del prodotto
         public double Vat { get; set; }
-        public bool NotUnder18 { get; set; }
+        public string Restricted { get; set; }
 
         // Costruttore
-        public Article (string description, double price, bool notUnder18){
+        public Article (string description, double price, string restricted){
             this.Description = description;
             this.Price = price;
-            this.NotUnder18 = notUnder18;
+            this.Restricted = restricted;
             }
         // Metodi
         public void Create(){
@@ -93,7 +93,7 @@ namespace ECommerce
         public void Order(Customer customer){           
                  
 
-             if (customer.Age < 18 && this.NotUnder18 == true)
+             if (customer.Age < 18 && this.Restricted == "Not Under 18")
              {
                  Console.WriteLine($"Sorry, you can not buy this article");
              }

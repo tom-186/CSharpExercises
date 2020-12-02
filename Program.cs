@@ -18,8 +18,8 @@ namespace CSharpExercises
             Customer secondCustomer = new Customer ("Andrea", "Bianchi", 15, "bfran@gmail.com");
             secondCustomer.Login();
 
-            Article article = new Article ("Face mask", 12.44, false);
-            Article article2 = new Article ("Bottle of wine", 25.85, true);
+            Article article = new Article ("Face mask", 12.44, "No restrictions");
+            Article article2 = new Article ("Bottle of wine", 25.85, "Not Under 18");
 
             /* Issue #2 */
             
@@ -29,9 +29,7 @@ namespace CSharpExercises
 
             /* Issue #3*/
 
-            Console.WriteLine(article2.NotUnder18);
-
-            
+                        
             article2.Order(secondCustomer);       
 
                    
