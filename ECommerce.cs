@@ -6,32 +6,34 @@ namespace ECommerce
     {
         // Fields or Attributes
         // Quanto più privati possibile
-        protected int Id;
-        protected string FirstName;
-        protected string LastName;
-        protected string Address;
-        protected int Zip;
-        protected string City;
-        protected string EMail;
-        protected string Password;
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+        public string Address { get; set; }
+        public int Zip { get; set; }
+        public string City { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         
         // Properties
         // getter - setter
         // TODO
-        public Customer(string firstName, string lastName, string eMail)
+        public Customer(string firstName, string lastName, int age, string email)
                 {
                     // runs every time we call new on the class
                     // costruttore - inizializza
                     // this: this object created from
                     this.FirstName = firstName;
                     this.LastName = lastName;
-                    this.EMail = eMail;
+                    this.Email = email;
+                    this.Age = age;
                 }
         // visibilità - valore di ritorno - NomeMetodo()
 
 
         public void Login(){
-            Console.WriteLine($"Hi, {this.FirstName} {this.LastName}, you are logged in..");
+            Console.WriteLine($"Hi, {this.FirstName} {this.LastName}, age {this.Age}, you are logged in..");
         }
         public void AddToCart(){
             Console.WriteLine("Product added to cart");
@@ -48,20 +50,26 @@ namespace ECommerce
         public void Registration(){
             Console.WriteLine("You are registering");
         }
+       
     }
+    
+    
 
     class Article{
+
         public int Id { get; }
         public string Description { get; }
         public double Price { get; set; }
         public int Stock { get; }
         public string Sku  { get; }  // per alcuni ecommerce la giacenza è il codice del prodotto
         public double Vat { get; set; }
+        public bool NotUnder18 { get; set; }
 
         // Costruttore
-        public Article (string description, double price){
+        public Article (string description, double price, bool notUnder18){
             this.Description = description;
             this.Price = price;
+            this.NotUnder18 = notUnder18;
             }
         // Metodi
         public void Create(){
@@ -79,7 +87,23 @@ namespace ECommerce
         public void Destroy(int id){
             Console.WriteLine($"You deleted the {this.Description} article which costs {this.Price} and has {id} as Id");
         }
-    }
+
+
+ 
+        public void Order(){           
+                 
+
+             if (this.Article.NotUnder18 == true)
+             {
+                 Console.WriteLine($"Sorry, you can not buy this article");
+             }
+             else
+             {        
+                 Console.WriteLine($"You made an order for the article");
+             }
+        } 
+  
+        
 
     class OrderHeader{
         private int Id; // in automatico
@@ -93,4 +117,5 @@ namespace ECommerce
             Date = date;
         }
     }
+  }
 }
