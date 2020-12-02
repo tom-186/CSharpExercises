@@ -32,7 +32,7 @@ namespace CSharpExercises
             Console.WriteLine(article2.NotUnder18);
 
             
-            article2.Order();       
+            article2.Order(secondCustomer);       
 
                    
         }
