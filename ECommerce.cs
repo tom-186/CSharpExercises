@@ -4,118 +4,134 @@ namespace ECommerce
 {
     class Customer
     {
-        // Fields or Attributes
-        // Quanto più privati possibile
+        // Fields 
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
-        public string Address { get; set; }
-        public int Zip { get; set; }
-        public string City { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string FirstName { get; }
+        public string LastName { get;  }
+        public int Age { get; }
+        public string Address { get; }
+        public int Zip { get; }
+        public string City { get;}
+        public string Email { get; }
+        public string Password { get; }
         
         // Properties
-        // getter - setter
-        // TODO
         public Customer(string firstName, string lastName, int age, string email)
                 {
-                    // runs every time we call new on the class
-                    // costruttore - inizializza
-                    // this: this object created from
                     this.FirstName = firstName;
                     this.LastName = lastName;
                     this.Email = email;
                     this.Age = age;
                 }
-        // visibilità - valore di ritorno - NomeMetodo()
+        
+        // Methods
 
-
-        public void Login(){
+        public void Login()
+        {
             Console.WriteLine($"Hi, {this.FirstName} {this.LastName}, age {this.Age}, you are logged in..");
         }
-        public void AddToCart(){
+        public void AddToCart()
+        {
             Console.WriteLine("Product added to cart");
         }
-        public void MyOrders(){
+        public void MyOrders()
+        {
             Console.WriteLine("These are your orders");
         }
-        public void WishList(){
+        public void WishList()
+        {
             Console.WriteLine("This is your wishlist");
         }
-        public void Cart(){
+        public void Cart()
+        {
             Console.WriteLine("This is your cart");
         }
-        public void Registration(){
+        public void Registration()
+        {
             Console.WriteLine("You are registering");
         }
-       
-    }
+     }   
     
-    
-
-    class Article{
-
+    class Article
+    {
+        // Fields
         public int Id { get; }
         public string Description { get; }
         public double Price { get; set; }
         public int Stock { get; }
-        public string Sku  { get; }  // per alcuni ecommerce la giacenza è il codice del prodotto
+        public string Sku  { get; } 
         public double Vat { get; set; }
-        public string Restricted { get; set; }
+        public string Restrictions { get; set; }
 
-        // Costruttore
-        public Article (string description, double price, string restricted){
+        // Properties
+        public Article (string description, double price, string restricted)
+        {
             this.Description = description;
             this.Price = price;
-            this.Restricted = restricted;
-            }
-        // Metodi
-        public void Create(){
+            this.Restrictions = restricted;
+        }
+        
+        // Methods
+        public void Create()
+        {
             Console.WriteLine("You created an article");
         }
 
-        public void Retrieve(int id){
+        public void Retrieve(int id)
+        {
             Console.WriteLine($"You are retrieving the {this.Description} article which costs {this.Price} and has {id} as Id");
         }
 
-        public void Update(){
+        public void Update()
+        {
             Console.WriteLine("You updated an article");
         }
 
-        public void Destroy(int id){
+        public void Destroy(int id)
+        {
             Console.WriteLine($"You deleted the {this.Description} article which costs {this.Price} and has {id} as Id");
         }
-
 
  
         public void Order(Customer customer){           
                  
 
-             if (customer.Age < 18 && this.Restricted == "Not Under 18")
+             if (customer.Age < 18 && this.Restrictions == "Not under 18")
              {
-                 Console.WriteLine($"Sorry, you can not buy this article");
+                 Console.WriteLine($"Sorry, you can not buy {this.Description} because you are {customer.Age} years old");
              }
              else
              {        
-                 Console.WriteLine($"You made an order for the article");
+                 Console.WriteLine($"You made an order for this article");
              }
         } 
   
         
 
-    class OrderHeader{
-        private int Id; // in automatico
-        private int OrderNumber; // in automatico
+    class OrderHeader
+    {
+        //Fields
+        private int Id;
+        private int OrderNumber; 
         private DateTime Date;
-        private int UserId; //BIGINT - serial (in altri DB)
+        private int UserId;
 
-        //Costruttore
-        public OrderHeader(int userId, DateTime date){
-            UserId = userId;  // non è obbligatorio il this.
-            Date = date;
+        //Methods
+        public void Create()
+        {
+            Console.WriteLine("You created an article");
         }
+
+        public void Destroy()
+        {
+            Console.WriteLine($"You deleted the {this.Description} article");
+        }
+
+        public void List()
+        {
+            Console.WriteLine("This is the list of your order headers");
+        }        
+        
     }
   }
 }

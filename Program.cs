@@ -7,19 +7,14 @@ namespace CSharpExercises
     {
         static void Main(string[] args)
         {
-            /* Console.WriteLine("Insert your name:");
-            string myName = Console.ReadLine();
-            Console.WriteLine(myName.ToUpper()); */
-
-            // var firstCustomer = new Customer();
             Customer firstCustomer = new Customer ("Francesco", "Rossi", 32, "frossi@yahoo.com");
             firstCustomer.Login();
 
-            Customer secondCustomer = new Customer ("Andrea", "Bianchi", 15, "bfran@gmail.com");
+            Customer secondCustomer = new Customer ("Andrea", "Bianchi", 15, "bandrea@gmail.com");
             secondCustomer.Login();
 
             Article article = new Article ("Face mask", 12.44, "No restrictions");
-            Article article2 = new Article ("Bottle of wine", 25.85, "Not Under 18");
+            Article article2 = new Article ("Bottle of wine", 25.85, "Not under 18");
 
             /* Issue #2 */
             
