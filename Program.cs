@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using ECommerce;
+
+
 
 namespace CSharpExercises
 {
@@ -19,13 +22,21 @@ namespace CSharpExercises
             /* Issue #2 */
             
             int firstId = 4;
-            article.Retrieve(firstId);
-            article.Destroy(3);
+            article.RetrieveArticle(firstId);
+            article.DestroyArticle(3);
 
             /* Issue #3*/
-
                         
-            article2.Order(secondCustomer);       
+            article2.OrderArticle(secondCustomer);  
+
+            /* Issue #5*/
+
+            // var list = new Customers();
+
+            // list.Add(firstCustomer);
+            // list.Add(secondCustomer);
+             
+                        
 
                    
         }

@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 
 namespace ECommerce
 {
-    class Customer
+    class Customer : User
     {
         // Fields 
         public int Id { get; set; }
@@ -15,7 +16,7 @@ namespace ECommerce
         public string Email { get; }
         public string Password { get; }
         
-        // Properties
+        // Constructor
         public Customer(string firstName, string lastName, int age, string email)
                 {
                     this.FirstName = firstName;
@@ -50,7 +51,54 @@ namespace ECommerce
         {
             Console.WriteLine("You are registering");
         }
-     }   
+     }  
+
+    class Admin : User
+    {
+        // Fields 
+        public int Id { get; set; }
+        public string FirstName { get; }
+        public string LastName { get;  }
+        public string Administrator {get; }
+        public string Email { get; }
+        public string Password { get; }
+
+        // Constructor
+        public Admin(string firstName, string lastName, string email)
+                {
+                    this.FirstName = firstName;
+                    this.LastName = lastName;
+                    this.Email = email;
+                }
+
+        // Methods
+        public void Login()
+        {
+            Console.WriteLine($"Hi, {this.FirstName} {this.LastName}, you are logged in..");
+        }
+
+        public void ManageOrders()
+        {
+            Console.WriteLine("You can now manage orders");
+        }
+
+        public void ManageArticles()
+        {
+            Console.WriteLine("You can now manage articles");
+        }
+
+        public void ManageCustomers()
+        {
+            Console.WriteLine("You can now manage cutomers");
+        }
+
+
+    } 
+
+    class User
+    {
+            // to be completed
+    }  
     
     class Article
     {
@@ -63,7 +111,7 @@ namespace ECommerce
         public double Vat { get; set; }
         public string Restrictions { get; set; }
 
-        // Properties
+        // Constructor
         public Article (string description, double price, string restricted)
         {
             this.Description = description;
@@ -72,12 +120,12 @@ namespace ECommerce
         }
         
         // Methods
-        public void Create()
+        public void CreateArticle()
         {
             Console.WriteLine("You created an article");
         }
 
-        public void Retrieve(int id)
+        public void RetrieveArticle(int id)
         {
             Console.WriteLine($"You are retrieving the {this.Description} article which costs {this.Price} and has {id} as Id");
         }
@@ -87,13 +135,13 @@ namespace ECommerce
             Console.WriteLine("You updated an article");
         }
 
-        public void Destroy(int id)
+        public void DestroyArticle(int id)
         {
             Console.WriteLine($"You deleted the {this.Description} article which costs {this.Price} and has {id} as Id");
         }
 
  
-        public void Order(Customer customer){           
+        public void OrderArticle(Customer customer){           
                  
 
              if (customer.Age < 18 && this.Restrictions == "Not under 18")
@@ -117,21 +165,87 @@ namespace ECommerce
         private int UserId;
 
         //Methods
-        public void Create()
+        public void CreateOrder()
         {
             Console.WriteLine("You created an article");
         }
 
-        public void Destroy()
+        public void DestroyOrder()
         {
-            Console.WriteLine($"You deleted the {this.Description} article");
+            Console.WriteLine("You deleted the this article");
         }
 
-        public void List()
+        public void ListOrder()
         {
             Console.WriteLine("This is the list of your order headers");
         }        
         
     }
+
+/*          class Customers
+    {
+        //Fields
+        private List<Customer> CustomerList = new List<Customer>();
+        
+        // Constructor
+        public Customers()
+        {
+            this.CustomerList = new List<Customer>();
+        }
+
+        //Methods
+        public void Add(Customer customer)
+        {
+            this.CustomerList.Add(customer);
+        }       
+        
+    } */ 
+
+    class OrderDetail
+    {
+        // Fields
+        private int Id;
+        private int Id_order;
+        private int Id_article;
+        private double Price;
+        private int qta;
+    }
+
+    class Articles
+    {
+        //Fields
+        private List<Article> ArticleList = new List<Article>();
+
+        // to be completed
+    }
+
+    class Cart
+    {
+        // Fields
+        private int Id;
+        private int Id_article;
+        private int UserId;
+        private int qta;
+
+        //Methods
+        public void Buy()
+        {
+            Console.WriteLine("You will soon redirected to payment page");
+        }
+
+        public void Empty()
+        {
+            Console.WriteLine("You removed all articles from cart");
+        }
+
+        public void ListCart()
+        {
+            Console.WriteLine("This is the list of your carts");
+        } 
+
+    }
+
+
+
   }
 }
