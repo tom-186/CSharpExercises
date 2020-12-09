@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using ECommerce;
 
 
@@ -25,17 +24,21 @@ namespace CSharpExercises
             article.RetrieveArticle(firstId);
             article.DestroyArticle(3);
 
-            /* Issue #3*/
+            /* Issue #3 */
                         
             article2.OrderArticle(secondCustomer);  
 
-            /* Issue #5*/
+            /* Issue #5 */
 
-            // var list = new Customers();
+            var list = new Customers();
 
-            // list.Add(firstCustomer);
-            // list.Add(secondCustomer);
+            list.Add(firstCustomer);
+            list.Add(secondCustomer); 
+
+            Console.WriteLine($"{list.CustomerList[0].FirstName} is the first customer");
+            Console.WriteLine($"{list.CustomerList[1].FirstName} is the second customer");   
              
+            /* Issue #6 */
                         
 
                    

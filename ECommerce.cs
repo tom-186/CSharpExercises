@@ -141,7 +141,8 @@ namespace ECommerce
         }
 
  
-        public void OrderArticle(Customer customer){           
+        public void OrderArticle(Customer customer)
+        {           
                  
 
              if (customer.Age < 18 && this.Restrictions == "Not under 18")
@@ -152,7 +153,8 @@ namespace ECommerce
              {        
                  Console.WriteLine($"You made an order for this article");
              }
-        } 
+        }
+    } 
   
         
 
@@ -182,10 +184,10 @@ namespace ECommerce
         
     }
 
-/*          class Customers
+          class Customers
     {
         //Fields
-        private List<Customer> CustomerList = new List<Customer>();
+        public List<Customer> CustomerList = new List<Customer>();
         
         // Constructor
         public Customers()
@@ -194,12 +196,12 @@ namespace ECommerce
         }
 
         //Methods
-        public void Add(Customer customer)
+         public void Add(Customer customer)
         {
             this.CustomerList.Add(customer);
-        }       
+        }  
         
-    } */ 
+    }  
 
     class OrderDetail
     {
@@ -208,7 +210,7 @@ namespace ECommerce
         private int Id_order;
         private int Id_article;
         private double Price;
-        private int qta;
+        private int Qta;
     }
 
     class Articles
@@ -225,12 +227,12 @@ namespace ECommerce
         private int Id;
         private int Id_article;
         private int UserId;
-        private int qta;
+        private int Qta;
 
         //Methods
         public void Buy()
         {
-            Console.WriteLine("You will soon redirected to payment page");
+            Console.WriteLine("You will soon redirected to the payment page");
         }
 
         public void Empty()
@@ -242,10 +244,7 @@ namespace ECommerce
         {
             Console.WriteLine("This is the list of your carts");
         } 
-
     }
 
-
-
-  }
+ 
 }
