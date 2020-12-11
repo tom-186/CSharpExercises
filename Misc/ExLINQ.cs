@@ -19,4 +19,14 @@ namespace ExLINQ
                      
         } 
     }
+
+    class Mountains
+    {
+        // Methods
+        public static string[] ListOfMountains(string startingString)
+        {
+            string[] mountains = startingString.Split(';');
+            return mountains;                    
+        }
+    }
 }
