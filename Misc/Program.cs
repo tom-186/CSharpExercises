@@ -17,7 +17,7 @@ namespace Program
             Console.WriteLine(result);
 
             var startingString = "Monte Falco, 1658, Parco Foreste Casentinesi ; Monte Falterona, 1654, Parco Foreste Casentinesi; Monte Fumaiolo, 1407, Appennino Tosco Emiliano";
-            var result2 = Mountains.ListOfMountains(startingString);  // less code here
+            var result2 = Mountains.ListOfMountains(startingString);  // less code here, only methods
             foreach (var item in result2)
             {
                Console.WriteLine(item.Split(',')[0].Trim()); 
