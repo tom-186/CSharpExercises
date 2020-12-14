@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace ECommerce
 {
@@ -91,8 +93,6 @@ namespace ECommerce
         {
             Console.WriteLine("You can now manage cutomers");
         }
-
-
     } 
 
     class User
@@ -142,8 +142,7 @@ namespace ECommerce
 
  
         public void OrderArticle(Customer customer)
-        {           
-                 
+        {       
 
              if (customer.Age < 18 && this.Restrictions == "Not under 18")
              {
@@ -216,9 +215,36 @@ namespace ECommerce
     class Articles
     {
         //Fields
-        private List<Article> ArticleList = new List<Article>();
+        public static List<Article> ArticleList = new List<Article>();
 
-        // to be completed
+        //Methods
+        public static void AddArticleToArticles(Article newArticle)
+        {
+            //Method to add an article to the list of articles
+            ArticleList.Add(newArticle);
+            Console.WriteLine($"You added an article to the list of articles");
+        }
+
+        public static void GetListOfArticles()
+        {
+            //Method to get the list of articles
+            Console.WriteLine($"You have requested the list of articles, which contains {ArticleList.Count} elements:");
+            foreach (var item in ArticleList)
+            {
+                Console.WriteLine(item.Description);
+            }
+        }
+
+        public static void Search(string searchTerm)
+        {
+            IEnumerable<string> searchQuery =
+            from element in ArticleList
+            where element.Contains(searchTerm)
+            select element;
+
+            Console.WriteLine($"You searched for term {searchTerm}; this article, {element}, which costs{element.Price} would be suitable for you?");
+
+        }
     }
 
     class Cart

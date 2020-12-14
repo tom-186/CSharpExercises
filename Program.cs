@@ -1,13 +1,11 @@
 ﻿using System;
 using ECommerce;
 
-
-
 namespace CSharpExercises
 {
     class Program
     {
-        static void Main(string[] args)
+        static void _Main(string[] args)
         {
             Customer firstCustomer = new Customer ("Francesco", "Rossi", 32, "frossi@yahoo.com");
             firstCustomer.Login();
@@ -37,11 +35,24 @@ namespace CSharpExercises
 
             Console.WriteLine($"{list.CustomerList[0].FirstName} is the first customer");
             Console.WriteLine($"{list.CustomerList[1].FirstName} is the second customer");   
-             
-            /* Issue #6 */
-                        
-
-                   
+                                
         }
-    }
+
+        public static void Main(string[] args)
+        {
+           // Milestone 1 
+           Customer customer = new Customer ("First name", "Last name", 32, "email"); 
+           Article article = new Article ("Article number one", 12.44, "No restrictions");
+
+           Articles.AddArticleToArticles(article);
+
+           Articles.GetListOfArticles();
+
+           // Milestone 2
+
+           Articles.Search("number");
+            
+        }
+
+     }
 }

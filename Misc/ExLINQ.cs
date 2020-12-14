@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -27,6 +28,25 @@ namespace ExLINQ
         {
             string[] mountains = startingString.Split(';');
             return mountains;                    
+        }
+    }
+
+    class Peaks
+    {
+        public static void FirstColumn(string separator, string source)
+        {
+            IEnumerable<string> firstColumnQuery =
+                from element in source.Split(separator)
+                let trimmed = element.Trim()
+                let splitted = trimmed.Split(",")
+                where splitted.Contains("Monte Falterona")                
+                select splitted[0];
+
+        foreach (var peaks in firstColumnQuery)
+            {
+                Console.WriteLine(peaks);
+            }
+
         }
     }
 }
