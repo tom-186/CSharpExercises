@@ -33,10 +33,7 @@ namespace ECommerce
         {
             Console.WriteLine($"Hi, {this.FirstName} {this.LastName}, age {this.Age}, you are logged in..");
         }
-        public void AddToCart()
-        {
-            Console.WriteLine("Product added to cart");
-        }
+        
         public void MyOrders()
         {
             Console.WriteLine("These are your orders");
@@ -153,9 +150,7 @@ namespace ECommerce
                  Console.WriteLine($"You made an order for this article");
              }
         }
-    } 
-  
-        
+    }    
 
     class OrderHeader
     {
@@ -170,19 +165,16 @@ namespace ECommerce
         {
             Console.WriteLine("You created an article");
         }
-
         public void DestroyOrder()
         {
             Console.WriteLine("You deleted the this article");
         }
-
         public void ListOrder()
         {
             Console.WriteLine("This is the list of your order headers");
         }        
         
     }
-
           class Customers
     {
         //Fields
@@ -212,11 +204,11 @@ namespace ECommerce
         private int Qta;
     }
 
-    class Articles
+     class Articles
     {
         //Fields
         public static List<Article> ArticleList = new List<Article>();
-
+        
         //Methods
         public static void AddArticleToArticles(Article newArticle)
         {
@@ -228,24 +220,34 @@ namespace ECommerce
         public static void GetListOfArticles()
         {
             //Method to get the list of articles
-            Console.WriteLine($"You have requested the list of articles, which contains {ArticleList.Count} elements:");
+            Console.WriteLine($"You have requested the list of articles, which contains {ArticleList.Count} element(s):");
             foreach (var item in ArticleList)
             {
                 Console.WriteLine(item.Description);
             }
         }
-
-        public static void Search(string searchTerm)
+           public static List<Article> Search(string searchTerm)
         {
-            IEnumerable<string> searchQuery =
+            IEnumerable<Article> searchQuery =
             from element in ArticleList
-            where element.Contains(searchTerm)
-            select element;
+            let description = element.Description
+            where description.Contains(searchTerm)
+            select element; 
 
-            Console.WriteLine($"You searched for term {searchTerm}; this article, {element}, which costs{element.Price} would be suitable for you?");
+            List<Article> resultList = searchQuery.ToList<Article>();
+           
+            
+            Console.WriteLine($"You searched for term '{searchTerm}', these are your results: ");
 
+            foreach (var item in resultList)
+            {
+              Console.WriteLine($"{item.Description}, which costs {item.Price}$, would be suitable for you?");
+            }  
+
+            return resultList;                                       
         }
-    }
+          
+    } 
 
     class Cart
     {
@@ -254,8 +256,26 @@ namespace ECommerce
         private int Id_article;
         private int UserId;
         private int Qta;
+        public static List<Article> CartList = new List<Article>();
 
-        //Methods
+
+        //Method
+        public static List<Article> AddToCart(List<Article> toCart)
+        {
+            Console.WriteLine($"{toCart.Count()} product(s) added to the cart");
+            foreach (var item in toCart)
+            {
+                CartList.Add(item);                
+            }                                   
+            
+            return CartList;            
+        }
+
+        public static void TotalToPay(List<Article> toPay)
+        {           
+            var total = toPay.Aggregate(0.00, (acc, val) => acc + val.Price);                                 
+            Console.WriteLine($"The total amount to be paid is {total}$");                   
+        } 
         public void Buy()
         {
             Console.WriteLine("You will soon redirected to the payment page");

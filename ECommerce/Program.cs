@@ -1,11 +1,12 @@
 ﻿using System;
 using ECommerce;
+using System.Collections.Generic;
 
 namespace CSharpExercises
 {
     class Program
     {
-        static void _Main(string[] args)
+          static void _Main(string[] args)
         {
             Customer firstCustomer = new Customer ("Francesco", "Rossi", 32, "frossi@yahoo.com");
             firstCustomer.Login();
@@ -38,21 +39,26 @@ namespace CSharpExercises
                                 
         }
 
-        public static void Main(string[] args)
+         public static void Main(string[] args)
         {
            // Milestone 1 
            Customer customer = new Customer ("First name", "Last name", 32, "email"); 
            Article article = new Article ("Article number one", 12.44, "No restrictions");
+           Article article2 = new Article ("Article number two", 25.39, "No restrictions");
 
            Articles.AddArticleToArticles(article);
+           Articles.AddArticleToArticles(article2);
 
            Articles.GetListOfArticles();
 
            // Milestone 2
+           var searchResult = Articles.Search("number");
 
-           Articles.Search("number");
-            
-        }
+           Cart.AddToCart(searchResult);
+
+           // Milestone 3
+           Cart.TotalToPay(searchResult);            
+        }        
 
      }
 }
