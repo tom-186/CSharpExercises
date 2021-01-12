@@ -1,6 +1,7 @@
 ﻿using System;
 using ECommerce;
 using System.Collections.Generic;
+using System.IO;
 
 namespace CSharpExercises
 {
@@ -45,20 +46,24 @@ namespace CSharpExercises
            Customer customer = new Customer ("First name", "Last name", 32, "email"); 
            Article article = new Article ("Article number one", 12.44, "No restrictions");
            Article article2 = new Article ("Article number two", 25.39, "No restrictions");
-
+                    
            Articles.AddArticleToArticles(article);
            Articles.AddArticleToArticles(article2);
 
            Articles.GetListOfArticles();
 
            // Milestone 2
-           var searchResult = Articles.Search("number");
+           var searchResult = Articles.Search("Article");
 
            Cart.AddToCart(searchResult);
 
            // Milestone 3
-           Cart.TotalToPay(searchResult);            
-        }        
+           Cart.TotalToPay(searchResult);
+
+           var articleList = Articles.ArticleList;
+           File.WriteAllText("list_of_articles", articleList[0].Description.ToString());                     
+
+           }        
 
      }
 }

@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 
 namespace ECommerce
 {
-    class Customer : User
+    class Customer
     {
         // Fields 
         public int Id { get; set; }
@@ -27,8 +28,7 @@ namespace ECommerce
                     this.Age = age;
                 }
         
-        // Methods
-
+        // Methods        
         public void Login()
         {
             Console.WriteLine($"Hi, {this.FirstName} {this.LastName}, age {this.Age}, you are logged in..");
@@ -52,7 +52,7 @@ namespace ECommerce
         }
      }  
 
-    class Admin : User
+    class Admin
     {
         // Fields 
         public int Id { get; set; }
@@ -152,7 +152,7 @@ namespace ECommerce
         }
     }    
 
-    class OrderHeader
+    /* class OrderHeader
     {
         //Fields
         private int Id;
@@ -174,7 +174,7 @@ namespace ECommerce
             Console.WriteLine("This is the list of your order headers");
         }        
         
-    }
+    } */
           class Customers
     {
         //Fields
@@ -190,11 +190,10 @@ namespace ECommerce
          public void Add(Customer customer)
         {
             this.CustomerList.Add(customer);
-        }  
-        
+        }          
     }  
 
-    class OrderDetail
+    /* class OrderDetail
     {
         // Fields
         private int Id;
@@ -202,7 +201,7 @@ namespace ECommerce
         private int Id_article;
         private double Price;
         private int Qta;
-    }
+    } */
 
      class Articles
     {
@@ -225,6 +224,8 @@ namespace ECommerce
             {
                 Console.WriteLine(item.Description);
             }
+            // Create a .txt wiche contains all articles
+            //File.WriteAllLines("list_of_articles.text", ArticleList);
         }
            public static List<Article> Search(string searchTerm)
         {
@@ -242,11 +243,11 @@ namespace ECommerce
             foreach (var item in resultList)
             {
               Console.WriteLine($"{item.Description}, which costs {item.Price}$, would be suitable for you?");
-            }  
-
+            } 
             return resultList;                                       
         }
-          
+
+                  
     } 
 
     class Cart
@@ -266,8 +267,7 @@ namespace ECommerce
             foreach (var item in toCart)
             {
                 CartList.Add(item);                
-            }                                   
-            
+            }                      
             return CartList;            
         }
 
